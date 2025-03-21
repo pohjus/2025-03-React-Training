@@ -13,7 +13,7 @@
 
 ---
 
-## Agenda
+## 🗓️ Agenda
 
 | Day              | Topic                           | Teams                                                                                                                                                                                                                                                           |
 | ---------------- | ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -21,7 +21,9 @@
 | `2025-03-25 Tue` | React: tools, life cycle, state | 👩‍💻 [Teams](https://teams.microsoft.com/l/meetup-join/19%3ameeting_ZWFjMDEyZWYtZWFkYi00NTVhLTliYzEtZmZkMGMzMWZiYzQw%40thread.v2/0?context=%7b%22Tid%22%3a%228dd62fd5-ea07-4361-a5d3-2f4586d7303b%22%2c%22Oid%22%3a%228b563574-c9e2-47e4-a103-21b0f2d8dd81%22%7d) |
 | `2025-03-26 Wed` | React: Using Hooks              | 👩‍💻 [Teams](https://teams.microsoft.com/l/meetup-join/19%3ameeting_ZWFjMDEyZWYtZWFkYi00NTVhLTliYzEtZmZkMGMzMWZiYzQw%40thread.v2/0?context=%7b%22Tid%22%3a%228dd62fd5-ea07-4361-a5d3-2f4586d7303b%22%2c%22Oid%22%3a%228b563574-c9e2-47e4-a103-21b0f2d8dd81%22%7d) |
 
-## Training Day
+## 📅 Training Day
+
+⚠️ The agenda outlined below is tentative and may be adjusted based on student needs and overall progress.
 
 | 🕒 Time         | 📌 Activity            |
 | --------------- | ---------------------- |
@@ -33,10 +35,14 @@
 | `14:00 - 14:15` | **☕ _Coffee Break_**  |
 | `14:15 - 16:00` | 📖 Theory or Exercises |
 
-## Assignments
+## ⚙️ Tools
 
-- ℹ️ When doing assignments help available in Slack in channel [`#help`](https://react-g5h6480.slack.com/archives/C08H9KX7GDD).
-- ℹ️ When finished with assignment, mark it done to google sheets (link in Slack).
+- ✅ Please install [**React tools**](https://github.com/pohjus/docs-install-development-tools/blob/main/install-react-tools.md) to your computer to be able to do the assignments.
+
+## 📝 Assignments
+
+- 🆘 When doing assignments help, available in Slack: [`#help`](https://react-g5h6480.slack.com/archives/C08H9KX7GDD).
+- ✅ When finished with assignment, mark it done to Google Sheets (link in Slack).
 
 ### `2025-03-24` Advanced ES Development
 
