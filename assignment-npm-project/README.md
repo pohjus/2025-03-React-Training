@@ -67,7 +67,7 @@ Notice that in here:
 const { performance } = require("perf_hooks");
 ```
 
-You are using **prebuilt** `[perf_hooks](https://nodejs.org/api/perf_hooks.html)` module. Node will come with a lots of different modules and you can use them straight away:
+You are using **prebuilt** [perf_hooks](https://nodejs.org/api/perf_hooks.html) module. Node will come with a lots of different modules and you can use them straight away:
 
 | Module          | Description                                                           | Example Usage                                                              |
 | --------------- | --------------------------------------------------------------------- | -------------------------------------------------------------------------- |
