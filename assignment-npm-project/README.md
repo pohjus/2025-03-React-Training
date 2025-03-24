@@ -8,6 +8,8 @@
 - [4️⃣ Improving Quality: ESLint](#4️⃣-improving-quality-eslint)
 - [5️⃣ Improving Quality: Prettier](#5️⃣-improving-quality-prettier)
 - [6️⃣ VS Code and Extensions](#6️⃣-vs-code-and-extensions)
+- [7️⃣ Calculator](#7️⃣-calculator)
+- [8️⃣ Args](#8️⃣-args)
 
 <!-- /TOC -->
 
@@ -635,3 +637,18 @@ Now on save notice that it fixes styling and quality problems:
 ![](images/21.gif)
 
 You now have a proper NPM project with ESLint, Prettier and VS Code as editor! 🎉
+
+## 7️⃣ Calculator
+
+Learn about readline. Create simple calculator (supports +, -, / and \*). Ask two numbers and also the operation (+, - ..).
+
+https://www.npmjs.com/package/readline-sync
+
+## 8️⃣ Args
+
+Now implement calculator so that you will use command line arguments:
+
+    node index.js 1 + 1
+    2
+
+Google how to get command line arguments in node.
