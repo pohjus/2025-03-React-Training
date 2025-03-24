@@ -8,6 +8,7 @@
 
 ## 📚 Material
 
+- [ECMAScript Core Language)[https://speakerdeck.com/pohjus/introduction-to-ecmascript]
 - [Quick Start to React](https://speakerdeck.com/pohjus/quick-start-to-react)
 - [Optimize React Apps with React 19 and Next.js](https://speakerdeck.com/pohjus/sustainability-in-web-development-how-to-optimize-react-apps)
 
