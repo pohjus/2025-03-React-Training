@@ -157,17 +157,43 @@ A component let’s you split the UI into reusable pieces. The component can be
 - Function component
 - Class component
 
-In the older versions of React you differentiate these two by features they had:
+🧠 Understanding React Components: Then vs Now
 
-- Class components had all features: props, state, life cycle
-- Function components had a subset of these: props
+In earlier versions of React, component types were clearly distinguished by the features they supported:
 
-So notice that class component have additional features to function component. But in the latest version of React, by using react hooks, the situation is:
+**Older Versions of React**
 
-- Class components has all features: props, state, life cycle
-- Function components has all features: props, state, life cycle
+🧱 Class Components
 
-It seems that the future of React development is in function components, even though class components are not deprecated.
+- ✅ Props
+- ✅ State
+- ✅ Lifecycle methods
+
+⚙️ Function Components
+
+- ✅ Props
+- ❌ State
+- ❌ Lifecycle methods
+
+Class components had more capabilities than function components.
+
+**🚀 Modern React (with Hooks)**
+
+Thanks to React Hooks, function components are now just as powerful:
+
+🧱 Class Components
+
+- ✅ Props
+- ✅ State
+- ✅ Lifecycle methods
+
+⚙️ Function Components (with Hooks)
+
+- ✅ Props
+- ✅ State
+- ✅ Lifecycle methods
+
+> 💡 Today, function components can do everything class components can—and are the preferred choice in modern React development.
 
 To declare a function component, write a ECMAScript function that
 
