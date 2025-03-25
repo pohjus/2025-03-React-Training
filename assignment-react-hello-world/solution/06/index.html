@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Styled ReactJS Table</title>
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <h1>Fetch API</h1>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+      const FetchIt = ({ url, library }) => {
+        const fetchIt = async () => {
+          try {
+            if (library === "fetch") {
+              const response = await fetch(url);
+              if (!response.ok) {
+                throw new Error(`Error: ${response.statusText}`);
+              }
+              const result = await response.json();
+              console.log(result);
+            } else if (library === "axios") {
+              const response = await axios.get(url);
+              console.log(response.data);
+            } else if (library === "jquery") {
+              $.ajax({
+                url,
+                method: "GET",
+                success: (result) => console.log(result),
+                error: (jqXHR) => console.error(jqXHR.statusText),
+              });
+            } else {
+              throw new Error("Unsupported library");
+            }
+          } catch (err) {
+            console.error(`Failed to fetch data: ${err.message}`);
+          }
+        };
+
+        return <button onClick={fetchIt}>Refresh</button>;
+      };
+
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+      root.render(
+        <FetchIt url="https://swapi.dev/api/people/1" library="jquery" />
+      );
+    </script>
+  </body>
+</html>
