@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ReactJS</title>
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  </head>
+  <body>
+    <h1>ReactJS</h1>
+
+    <div id="root"></div>
+
+    <script>
+      // Get reference to the div
+      const myDiv = document.getElementById("root");
+
+      // Create link
+      const link = React.createElement(
+        "a",
+        { href: "https://reactjs.org/" },
+        "React"
+      );
+
+      // Get the root element of our app
+      const root = ReactDOM.createRoot(myDiv);
+
+      // Inject the link inside of root (div)
+      root.render(link);
+    </script>
+  </body>
+</html>

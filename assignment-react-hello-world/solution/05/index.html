@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Styled ReactJS Table</title>
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #f4f4f4;
+        text-align: center;
+        padding: 20px;
+      }
+
+      h1 {
+        color: #333;
+        font-size: 28px;
+        margin-bottom: 20px;
+      }
+
+      table {
+        width: 80%;
+        margin: auto;
+        border-collapse: collapse;
+        background: #fff;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        overflow: hidden;
+      }
+
+      td {
+        border: 2px solid #ddd;
+        padding: 10px;
+        text-align: center;
+        transition: transform 0.2s ease-in-out;
+      }
+
+      td:hover {
+        transform: scale(1.1);
+        background: #f8f9fa;
+      }
+
+      img {
+        border-radius: 10px;
+        box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Beautiful Image Table</h1>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+      const getRandomImageUrl = () => {
+        const uniqueSeed = Math.random().toString(36).substring(7); // Unique seed
+        return `https://picsum.photos/seed/${uniqueSeed}/150/150`; // Unique image
+      };
+
+      const RandomImage = () => {
+        return (
+          <img
+            src={getRandomImageUrl()}
+            width="150"
+            height="150"
+            alt="random"
+          />
+        );
+      };
+
+      const Row = ({ cols }) => {
+        return (
+          <tr>
+            {Array.from({ length: cols }).map((_, index) => (
+              <td key={index}>
+                <RandomImage />
+              </td>
+            ))}
+          </tr>
+        );
+      };
+
+      const Table = ({ rows, cols }) => {
+        return (
+          <table>
+            <tbody>
+              {Array.from({ length: rows }).map((_, index) => (
+                <Row key={index} cols={cols} />
+              ))}
+            </tbody>
+          </table>
+        );
+      };
+
+      // Get the root element of our app
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+
+      // Render the table component
+      root.render(<Table rows={4} cols={4} />);
+    </script>
+  </body>
+</html>

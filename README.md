@@ -51,7 +51,7 @@
 
 ### `2025-03-25` React: Tooling, Lifecycle Methods, State
 
-- 📝 01: ReactJS: Hello World
+- 📝 01: [ReactJS: Hello World](assignment-react-hello-world/README.md)
 - 📝 02: Creating React Project using Vite
 
 ### `2025-03-26` React: Using Hooks
