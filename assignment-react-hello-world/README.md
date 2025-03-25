@@ -267,7 +267,7 @@ const CloudResources = () => {
 };
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<T3 />);
+root.render(<CloudResources />);
 ```
 
 Try it out.
