@@ -48,7 +48,6 @@
 ### `2025-03-24` Advanced ES Development
 
 - 📝 01: [How to Build a proper NPM Project?](assignment-npm-project/README.md)
-- 📝 02: Functional Programming in ES
 
 ### `2025-03-25` React: Tooling, Lifecycle Methods, State
 
