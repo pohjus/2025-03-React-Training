@@ -14,6 +14,14 @@
   - [d) Event Handling: Delete](#d-event-handling-delete)
   - [e) Sort](#e-sort)
   - [f) Bootstrap](#f-bootstrap)
+- [5️⃣ UseEffect](#5️⃣-useeffect)
+- [6️⃣ Using Props and Lifecycle](#6️⃣-using-props-and-lifecycle)
+- [7️⃣ Lifting State Up](#7️⃣-lifting-state-up)
+  - [a) Passing a function as props](#a-passing-a-function-as-props)
+  - [b) Passing variable from child to parent](#b-passing-variable-from-child-to-parent)
+  - [c) Passing variable to sibling](#c-passing-variable-to-sibling)
+  - [d) User given variable](#d-user-given-variable)
+- [8️⃣ Giphy](#8️⃣-giphy)
 
 <!-- /TOC -->
 
@@ -358,3 +366,289 @@ Installation:
 https://react-bootstrap.netlify.app/docs/getting-started/introduction
 
 ![](images/02.png)
+
+## 5️⃣ UseEffect
+
+Create new file: `components/Person.js`:
+
+```javascript
+function Person() {
+  return <p>Not loaded yet</p>;
+}
+```
+
+And use this in App.js:
+
+```javascript
+return (
+  <>
+    <h1>StarWars API</h1>
+    <Person />
+  </>
+);
+```
+
+Now let’s connect to star wars api and fetch luke skywalker’s name.
+
+In addition to state, you can create lifecycle using react hooks. Idea is that when component is mounted to DOM, it will start fetching data automatically.
+
+To do this, try out `React.useEffect`:
+
+```javascript
+React.useEffect(() => {
+  // Stuff that happens when component is mounted (or updated!)
+  console.log("loaded");
+});
+```
+
+See that you will get the string to console.
+
+Now let’s use a state. Add:
+
+```javascript
+let [random, setRandom] = React.useState(0);
+```
+
+And in your UI (modify)
+
+```javascript
+return <p>{random}</p>;
+```
+
+And when component is loaded:
+
+```javascript
+React.useEffect(() => {
+  setRandom(Math.random());
+});
+```
+
+What happens? Notice that this useEffect arrow function is called
+
+- a) when component is mounted
+- b) when component is updated (state changes)
+
+Because now state changes in here, it will invoke the arrow function again! Which will invoke the arrow function again … and again …
+
+The React.useEffect has two arguments
+
+- a) function
+- b) dependency list (array)
+
+If you pass empty array (how intuitive 🙂 ) the function is run only one time when component is mounted:
+
+```javascript
+React.useEffect(() => {
+  setRandom(Math.random());
+}, []);
+```
+
+Let’s see some more uses with dependencies later on.
+
+Let’s now do some fetching from start wars api, use url `https://swapi.dev/api/people/1/`. And display the contents of this to console first.
+
+Modify your app so that it displays Luke Skywalker’s name in the end in the UI.
+
+Remember that you cannot use async function in useEffect. If you want to implement async/await:
+
+```javascript
+React.useEffect(() => {
+  async function fetchIt() {
+    // in here you can use await
+  }
+  fetchIt();
+}, []);
+```
+
+## 6️⃣ Using Props and Lifecycle
+
+Now change your main component, App, so you can pass the id:
+
+```javascript
+function App() {
+  return <Person id={1} />;
+}
+```
+
+And when changing this it will display different name in the UI:
+
+```javascript
+React.useEffect(() => {
+  fetch(`https://swapi.dev/api/people/${props.id}/`);
+}, []);
+```
+
+Notice that your app may get an error now:
+
+> React Hook React.useEffect has a missing dependency: 'props.id'. Either include it or remove the dependency array react-hooks/exhaustive-deps
+
+So it suggest you to either
+
+- a) Remove the empty array [] from dependency list (eternal loop!!)
+
+Or
+
+- b) Add new dependency, props.id.
+
+Let’s do b:
+
+```javascript
+React.useEffect(() => {
+  fetch(`https://swapi.dev/api/people/${props.id}/`);
+}, [props.id]);
+```
+
+Now the `useEffect` is called when `props.id` changes!
+
+Well it does not change in our app at all. Let’s make a modification to this, implement your app so that user can give the id:
+
+![](images/03.png)
+
+So in your main component, ask the id, pass it as props to the component you have now created.
+
+Main component could look like
+
+```javascript
+function App() {
+  let [id, setId] = useState(1);
+  return (
+    <div>
+      <h1>App</h1>
+      <input type="number" onChange={(e) => setId(Number(e.target.value))} />
+      <Person id={id} />
+    </div>
+  );
+}
+```
+
+When changing the id, the props changes and when props changes the use effect takes place. So it “depends on that value and when it changes it invokes the function”.
+
+If time, try to create also error handling so that if input is empty it does not fetch anything.
+
+## 7️⃣ Lifting State Up
+
+How do sister elements share date between them? Let’s use lifting state up.
+
+### a) Passing a function as props
+
+Take the following
+
+```javascript
+function App() {
+  return (
+    <div>
+      <Input />
+      <Output />
+    </div>
+  );
+}
+```
+
+How would Input component communicate with Output component? Let’s use lifting state up.
+
+Input and Output:
+
+```javascript
+function Output() {
+  return <p>Output</p>;
+}
+```
+
+and
+
+```javascript
+function Input() {
+  return <p>Input</p>;
+}
+```
+
+Test that this works, you will get Input and Output in your browser. Modify the Input so that you can pass a string:
+
+```javascript
+function App() {
+  let name = "Jack";
+  return (
+    <div>
+      <Input name={name} />
+      <Output />
+    </div>
+  );
+}
+```
+
+Display the given name in the UI, so your UI should now have Jack and Output.
+
+Because functions are also objects, we can pass those as props. Now modify your solution:
+
+```javascript
+function App() {
+  function doIt() {
+    alert("hello");
+  }
+  return (
+    <div>
+      <Input clicked={doIt} />
+      <Output />
+    </div>
+  );
+}
+```
+
+Now modify your Input so that it has a button. When that button is clicked, the doIt() function is called and alert is raised.
+
+### b) Passing variable from child to parent
+
+Now change your doIt function so that it has an argument:
+
+```javascript
+function App() {
+  function doIt(name) {
+    alert(name);
+  }
+  return (
+    <div>
+      <Input clicked={doIt} />
+      <Output />
+    </div>
+  );
+}
+```
+
+Now when button is clicked pass some static name, for example “Tina” when button is clicked. Your app should have a button and when that is pressed, “Tina” is displayed in the alert.
+
+### c) Passing variable to sibling
+
+Now Input component passes a variable to your main component (App). Let’s now pass the variable to the sibling (Output). Use props for this:
+
+```javascript
+return (
+  <div>
+    <Input clicked={doIt} />
+    <Output name={name} />
+  </div>
+);
+```
+
+When the button is clicked, the Output component displays the name which was given by Input. Use state in App to implement this.
+
+### d) User given variable
+
+Now change your UI so that in Input you ask the name. When clicking the button it will display the name in Output.
+
+![](images/04.png)
+
+## 8️⃣ Giphy
+
+Create account for developers.giphy.com. Create new app and obtain a API KEY.
+
+Implement following react component:
+
+```javascript
+<Search keyword="sad" offset={0} />
+```
+
+It will search and display gifs with keyword, max 5 gifs are shown and offset can be set also:
+
+![](images/05.jpeg)
+
+The user input is build outside of the Search - component, user can give the search keyword and can increase and decrease the offset by 5.
