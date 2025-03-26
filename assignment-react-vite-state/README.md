@@ -718,11 +718,15 @@ Run your app and you should see a map in browser.
 
 Now take the following backend
 
-git clone https://github.com/pohjus/restful-api-nodejs
-cd restful-api-nodejs
-npm install
-node app.js
+    git clone https://github.com/pohjus/restful-api-nodejs
+    cd restful-api-nodejs
+    npm install
+    node app.js
 
 Add couple of locations (see README.md of the repo)
 
 Implement your React app so that markers are in the place where the backend stores them. So fetch all locations from the backend and display markers in the map.
+
+You could also try to create event (click or doubleclick) which would create http post to the backend with the specified location of the mouse cursor. Location is saved on the backend DB and it is displayed in the UI.
+
+    https://react-leaflet.js.org
