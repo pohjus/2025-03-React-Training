@@ -22,6 +22,7 @@
   - [c) Passing variable to sibling](#c-passing-variable-to-sibling)
   - [d) User given variable](#d-user-given-variable)
 - [8️⃣ Giphy](#8️⃣-giphy)
+- [9️⃣ Maps](#9️⃣-maps)
 
 <!-- /TOC -->
 
