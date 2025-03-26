@@ -47,12 +47,12 @@
 
 ### `2025-03-24` Advanced ES Development
 
-- 📝 01: [How to Build a proper NPM Project?](assignment-npm-project/README.md)
+- 📝 [How to Build a proper NPM Project?](assignment-npm-project/README.md)
 
 ### `2025-03-25` React: Tooling, Lifecycle Methods, State
 
-- 📝 01: [ReactJS: Hello World](assignment-react-hello-world/README.md)
+- 📝 [ReactJS: Hello World](assignment-react-hello-world/README.md)
 
 ### `2025-03-26` React: Using Hooks
 
-- 📝 01: [Creating React Project using Vite and State](assignment-react-vite-state/README.md)
+- 📝 [Creating React Project using Vite and State](assignment-react-vite-state/README.md)
