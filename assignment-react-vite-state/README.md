@@ -19,7 +19,6 @@
 
 ---
 
-<!--
 ## 1️⃣ Creating Project using VITE or CRA
 
 You may choose your tool
@@ -359,4 +358,3 @@ Installation:
 https://react-bootstrap.netlify.app/docs/getting-started/introduction
 
 ![](images/02.png)
--->
