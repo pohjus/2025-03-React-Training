@@ -652,3 +652,77 @@ It will search and display gifs with keyword, max 5 gifs are shown and offset ca
 ![](images/05.jpeg)
 
 The user input is build outside of the Search - component, user can give the search keyword and can increase and decrease the offset by 5.
+
+## 9️⃣ Maps
+
+Create React App that uses maps:
+
+    npm install leaflet react-leaflet
+
+In main.jsx
+
+```javascript
+import "leaflet/dist/leaflet.css";
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+```
+
+And App.jsx
+
+```javascript
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import L from "leaflet";
+import "leaflet/dist/leaflet.css";
+
+// Fix marker icons not showing
+delete L.Icon.Default.prototype._getIconUrl;
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl:
+    "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-icon-2x.png",
+  iconUrl:
+    "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-icon.png",
+  shadowUrl:
+    "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-shadow.png",
+});
+
+function App() {
+  return (
+    <div style={{ height: "100vh" }}>
+      <MapContainer
+        center={[51.505, -0.09]}
+        zoom={13}
+        style={{ height: "100%" }}
+      >
+        <TileLayer
+          attribution='&copy; <a href="https://osm.org/copyright">OpenStreetMap</a>'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        <Marker position={[51.505, -0.09]}>
+          <Popup>A simple React Leaflet marker.</Popup>
+        </Marker>
+      </MapContainer>
+    </div>
+  );
+}
+
+export default App;
+```
+
+Disable all other CSS.
+
+Run your app and you should see a map in browser.
+
+Now take the following backend
+
+git clone https://github.com/pohjus/restful-api-nodejs
+cd restful-api-nodejs
+npm install
+node app.js
+
+Add couple of locations (see README.md of the repo)
+
+Implement your React app so that markers are in the place where the backend stores them. So fetch all locations from the backend and display markers in the map.
